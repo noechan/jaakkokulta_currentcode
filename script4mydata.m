@@ -1,15 +1,15 @@
 clear all
 % Define paths and init variables
-data_path='/Volumes/LASA/Aphasia_project/Acoustic_analysis/singing_stimuli/FJ_Model/data/';
-code_path='/Volumes/LASA/Aphasia_project/Acoustic_analysis/code/jaakkokulta_currentcode/';
+data_path='/Volumes/LASA/Aphasia_project/Acoustic_analysis/singing_stimuli/LASA Frere Jacques baseline/data/';
+code_path='/Users/noeliamartinezmolina/Documents/GitHub/jaakkokulta_currentcode/';
 addpath(code_path)
 addpath(fullfile(code_path,'yin'))
 fileExtension = '.mp3'; % replace this with e.g. 'wav' if needed
 jaakkokultatemp=[0 0 2 2 4 4 0 0 0 0 2 2 4 4 0 0 4 4 5 5 7 7 7 7 4 4 5 5 7 7 7 7 7 9 7 5 4 4 0 0 7 9 7 5 4 4 0 0 0 0 -5 -5 0 0 0 0 0 0 -5 -5 0 0 0 0];
 cd (data_path)
-d = dir('*_48k.mp3');
+d = dir('*_48k_1rep.mp3');
 i = 1;
-for k = 1:numel(d)
+for k = 2:numel(d)
     if contains(d(k).name,fileExtension)
         fname = d(k).name;
         out{i} = melodymatching4mydata(fname, jaakkokultatemp);
