@@ -62,9 +62,9 @@ disp('Feature values')
 disp(sortrows([table(string(filename'),'VariableNames',{'filename'}),array2table(pitcherror),array2table(mean(pitcherror,2),'VariableNames',{'mean'})],'mean'))
 disp(sortrows([table(string(filename'),'VariableNames',{'filename'}),array2table(rhythmerror),array2table(mean(rhythmerror,2),'VariableNames',{'mean'})],'mean'))
 
-pitcherror=[table(string(filename'),'VariableNames',{'filename'}),array2table(pitcherror)];
-rhythmerror=[table(string(filename'),'VariableNames',{'filename'}),array2table(rhythmerror)];
-writetable(pitcherror, 'pitcherror_model');
-writetable(rhythmerror, 'rhythmerror_model');
+pitcherror_t=[table(string(filename'),'VariableNames',{'filename'}),array2table(pitcherror)];
+rhythmerror_t=[table(string(filename'),'VariableNames',{'filename'}),array2table(rhythmerror)];
+writetable(pitcherror_t, 'pitcherror_model');
+writetable(rhythmerror_t, 'rhythmerror_model');
 
 close()
