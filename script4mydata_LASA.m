@@ -2,6 +2,7 @@ clear all
 % Define paths and init variables
 data_path='/Volumes/LASA/Aphasia_project/Acoustic_analysis/singing_stimuli/LASA Frere Jacques baseline/data/';
 code_path='/Users/noeliamartinezmolina/Documents/GitHub/jaakkokulta_currentcode/';
+output_path='/Volumes/LASA/Aphasia_project/Acoustic_analysis/singing_stimuli/LASA Frere Jacques baseline/results/';
 addpath(code_path)
 addpath(fullfile(code_path,'yin'))
 fileExtension = '.mp3'; % replace this with e.g. 'wav' if needed
@@ -9,7 +10,7 @@ jaakkokultatemp=[0 0 2 2 4 4 0 0 0 0 2 2 4 4 0 0 4 4 5 5 7 7 7 7 4 4 5 5 7 7 7 7
 cd (data_path)
 d = dir('*_48k_1rep.mp3');
 i = 1;
-for k = 2:numel(d)
+for k = 1:numel(d)
     if contains(d(k).name,fileExtension)
         fname = d(k).name;
         out{i} = melodymatching4mydata(fname, jaakkokultatemp);
@@ -37,6 +38,8 @@ end
 lg = legend({'pitch curve','template'},'Orientation','Horizontal');
 lg.Layout.Tile = 'North'; % <-- Legend placement with tiled layout
 
+cd(output_path)
+print('Pitch curve-Template','-dpng')
 
 
 cf = corr([pitcherror rhythmerror]);
@@ -51,8 +54,16 @@ yticklabels([pitlab rhylab])
 colorbar
 title('correlation between features')
 
+print('Correlation between features','-dpng')
+
+% Display and save feature values
 disp('Feature values')
 disp(sortrows([table(string(filename'),'VariableNames',{'filename'}),array2table(pitcherror),array2table(mean(pitcherror,2),'VariableNames',{'mean'})],'mean'))
 disp(sortrows([table(string(filename'),'VariableNames',{'filename'}),array2table(rhythmerror),array2table(mean(rhythmerror,2),'VariableNames',{'mean'})],'mean'))
 
-rmpath('yin')
+pitcherror_t=[table(string(filename'),'VariableNames',{'filename'}),array2table(pitcherror)];
+rhythmerror_t=[table(string(filename'),'VariableNames',{'filename'}),array2table(rhythmerror)];
+writetable(pitcherror_t, 'pitcherror_model');
+writetable(rhythmerror_t, 'rhythmerror_model');
+
+close()
