@@ -5,7 +5,7 @@ arguments
     fname % filename
     temp % melody template
     par.thres = 0.1; % amplitude threshold for trimming
-    par.minf0 = 30 % Hz - minimum expected F0
+    par.minf0 = 30 % Hz - minimum expected F0 (default: SR/(4*dsratio))
     par.maxf0 = 1000 % Hz - maximum expected F0
     par.hop = 32 % samples - interval between estimates (default: 32)
 end
@@ -16,10 +16,17 @@ thres=par.thres;
 
 N=length(temp);
 
-% 1. Estimate and pitch and amplitude
+% 1. Estimate pitch and amplitude
+
+% yin output For the yinpar returns 4 1x25796 (max. range/hop) array including:
+%f0: %fundamental frequency in octaves re: 440 Hz
+%ap0 & ap: periodicity measure (ratio of aperiodic to total power)
+%pwr: period-smoothed instantaneous power 
+%sr=44100 and should be changed to 48kHz to match the recording's
+% value
 yinout=yin(fname,yinpar);
-f0=yinout.f0;
-pitch0=69+12*f0;
+f0=yinout.f0; 
+pitch0=69+12*f0; % is this converting the values to semitones? range(1.17,-3.87)
 pitch=medfilt1(pitch0,3); % slight median filtering
 amp=sqrt(yinout.pwr);
 amp=amp/max(amp); % normalize max amplitude

@@ -6,9 +6,11 @@ output_path='/Volumes/LASA/Aphasia_project/Acoustic_analysis/singing_stimuli/FJ_
 addpath(code_path)
 addpath(fullfile(code_path,'yin'))
 fileExtension = '.mp3'; % replace this with e.g. 'wav' if needed
-jaakkokultatemp=[0 0 2 2 4 4 0 0 0 0 2 2 4 4 0 0 4 4 5 5 7 7 7 7 4 4 5 5 7 7 7 7 7 9 7 5 4 4 0 0 7 9 7 5 4 4 0 0 0 0 -5 -5 0 0 0 0 0 0 -5 -5 0 0 0 0];
+jaakkokultatemp=[0 0 2 2 4 4 0 0 0 0 2 2 4 4 0 0 4 4 5 5 7 7 7 7 4 4 5 5 7 7 7 7 7 9 7 5 4 4 0 0 7 9 7 5 4 4 0 0 0 0 -5 -5 0 0 0 0 0 0 -5 -5 0 0 0 0]; %
 cd (data_path)
 d = dir('*_48k_1rep.mp3');
+
+
 i = 1;
 for k = 1:numel(d)
     if contains(d(k).name,fileExtension)
