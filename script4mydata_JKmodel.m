@@ -41,7 +41,7 @@ lg = legend({'pitch curve','template'},'Orientation','Horizontal');
 lg.Layout.Tile = 'North'; % <-- Legend placement with tiled layout
  
 cd(output_path)
-print('Pitch curve-Template','-dpng')
+print('Pitch curve-Template_Model','-dpng')
 
 
 

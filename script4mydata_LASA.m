@@ -1,6 +1,6 @@
 clear all
 % Define paths and init variables
-data_path='/Volumes/LASA/Aphasia_project/Acoustic_analysis/singing_stimuli/LASA Frere Jacques baseline/data/';
+data_path='/Volumes/LASA/Aphasia_project/Acoustic_analysis/singing_stimuli/LASA Frere Jacques baseline/data/problematic/males/';
 code_path='/Users/noeliamartinezmolina/Documents/GitHub/jaakkokulta_currentcode/';
 output_path='/Volumes/LASA/Aphasia_project/Acoustic_analysis/singing_stimuli/LASA Frere Jacques baseline/results/';
 addpath(code_path)
@@ -39,7 +39,7 @@ lg = legend({'pitch curve','template'},'Orientation','Horizontal');
 lg.Layout.Tile = 'North'; % <-- Legend placement with tiled layout
 
 cd(output_path)
-print('Pitch curve-Template','-dpng')
+print('Pitch curve-Template_LASA_problematic_males','-dpng')
 
 
 cf = corr([pitcherror rhythmerror]);

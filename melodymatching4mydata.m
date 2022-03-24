@@ -71,7 +71,7 @@ M4=length(pitch4);
 temp4=temp4a+mean(pitch4)-mean(temp4a);
 
 % 9. Rhythm error score
-out.rhythmerror=(sum(diff(idx)==0)+sum(idy==0))/length(idx);
+out.rhythmerror=(sum(diff(idx)==0)+sum(diff(idy)==0))/length(idx);
 
 % 10. Pitch error score 1: no segmenting, no trend removal
 % amplitude-weighted mean absolute error
