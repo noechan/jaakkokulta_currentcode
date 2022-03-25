@@ -1,4 +1,4 @@
-function out = melodymatching(fname, temp, par)
+function out = melodymatching4mydata_wnoteonsets(fname, temp, par)
 %function out = melodymatching(fname, temp, par)
 
 arguments
@@ -134,7 +134,7 @@ pe5d=detrend(pe5);
 out.pitcherror(4)=mean(abs(pe5d));
 
 % 15. Pitch error score 5: parsons code distance
-pitch6=sign(diff(pitch5));
+pitch6=sign(diff(round(pitch5))); % added round
 temp6=sign(diff(temp5));
 out.pitcherror(5)=sum(abs(pitch6-temp6));
 
