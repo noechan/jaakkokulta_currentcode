@@ -21,7 +21,7 @@ cd (data_path)
 d = dir('*_48k_1rep.mp3');
 
 i = 1;
-for k =2% 1:numel(d)
+for k =1:numel(d)
     if contains(d(k).name,fileExtension)
         fname = d(k).name;
         out{i} = melodymatching4mydata_wnoteonsets(fname, jaakkokultatemp,'onset',jaakkokultaonsets);
