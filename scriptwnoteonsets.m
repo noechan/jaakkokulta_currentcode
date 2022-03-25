@@ -3,6 +3,16 @@ fileExtension = '.mp3'; % replace this with e.g. 'wav' if needed
 addpath('yin')
 jaakkokultatemp=[0 0 2 2 4 4 0 0 0 0 2 2 4 4 0 0 4 4 5 5 7 7 7 7 4 4 5 5 7 7 7 7 7 9 7 5 4 4 0 0 7 9 7 5 4 4 0 0 0 0 -5 -5 0 0 0 0 0 0 -5 -5 0 0 0 0];
 jaakkokultaonsets=[1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 0 0 1 0 1 0 1 0 0 0 1 1 1 1 1 0 1 0 1 1 1 1 1 0 1 0 1 0 1 0 1 0 0 0 1 0 1 0 1 0 0 0];
+ % Plot template and note onsets
+plot (jaakkokultatemp); hold on
+n=1;
+for i=1:length(jaakkokultaonsets)
+    if jaakkokultaonsets(i)==1
+        xline(i)
+        n=n+1;
+    end
+end
+
 d = dir(pwd);
 i = 1;
 for k = 1:numel(d)
