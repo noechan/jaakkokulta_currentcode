@@ -25,7 +25,7 @@ i = 1;
 for k = 1:numel(d)
     if contains(d(k).name,fileExtension)
         fname = d(k).name;
-        out{i} = melodymatching(fname, jaakkokultatemp,'onset',jaakkokultaonsets);
+        out{i} = melodymatching4mydata_wnoteonsets(fname, jaakkokultatemp,'onset',jaakkokultaonsets);
         out{i}.filename = d(k).name;
         i = i+1;
     end
@@ -51,7 +51,7 @@ lg = legend({'pitch curve','template'},'Orientation','Horizontal');
 lg.Layout.Tile = 'North'; % <-- Legend placement with tiled layout
  
 cd(output_path)
-print('Pitch curve-Template_Model','-dpng')
+print('Pitch curve-Template_Model-Note onsets segmentation','-dpng')
 
 
 
